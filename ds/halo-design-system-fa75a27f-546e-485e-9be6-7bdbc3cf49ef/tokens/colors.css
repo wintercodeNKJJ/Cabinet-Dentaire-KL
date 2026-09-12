@@ -1,0 +1,19 @@
+:root{
+/* base neutrals — the system is greyscale first */
+--grey-0:#ffffff;--grey-25:#fbfbfb;--grey-50:#f6f6f5;--grey-100:#f1f1f0;--grey-150:#eaeae8;
+--grey-200:#e2e2e0;--grey-300:#cfcfcc;--grey-400:#a8a8a4;--grey-500:#82827e;--grey-600:#5c5c58;
+--grey-700:#3a3a37;--grey-800:#222220;--grey-900:#131312;--grey-950:#0a0a09;
+/* accents — used sparingly, one per surface */
+--ember-400:#ff8a6a;--ember-500:#f4633a;--ember-600:#d94d27;
+--sky-200:#d6e6ef;--sky-300:#b6d4e4;--sky-400:#8fb9cf;--sky-600:#3d6a83;
+--mist-100:#eef2f4;--mist-200:#e0e7ec;
+/* semantic aliases */
+--text-strong:var(--grey-950);--text-body:var(--grey-800);--text-muted:var(--grey-500);
+--text-faint:var(--grey-400);--text-invert:var(--grey-0);
+--surface-page:var(--grey-50);--surface-card:var(--grey-0);--surface-sunken:var(--grey-100);
+--surface-inverse:var(--grey-950);--surface-tint:var(--mist-100);
+--border-hairline:var(--grey-200);--border-strong:var(--grey-300);--border-inverse:rgba(255,255,255,.18);
+--accent:var(--ember-500);--accent-soft:var(--ember-400);--accent-cool:var(--sky-400);
+--overlay-scrim:rgba(10,10,9,.44);--glass-fill:rgba(255,255,255,.62);--glass-fill-dark:rgba(10,10,9,.58);
+--focus-ring:var(--grey-950);
+}

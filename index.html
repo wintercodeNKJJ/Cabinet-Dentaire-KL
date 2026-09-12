@@ -1,0 +1,1941 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/fonts.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/colors.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/typography.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/spacing.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/radius.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/elevation.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/tokens/motion.css"
+        />
+        <link
+          rel="stylesheet"
+          href="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/styles.css"
+        />
+        <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.js"></script>
+        <script src="./ds/halo-design-system-fa75a27f-546e-485e-9be6-7bdbc3cf49ef/_ds_bundle.js"></script>
+        <style>
+          html {
+            scroll-behavior: smooth;
+          }
+          body {
+            margin: 0;
+            background: var(--surface-page);
+            color: var(--text-body);
+            font-family: var(--font-text);
+            -webkit-font-smoothing: antialiased;
+          }
+          * {
+            box-sizing: border-box;
+          }
+          a {
+            color: var(--text-strong);
+            text-decoration: none;
+          }
+          a:hover {
+            color: var(--grey-600);
+          }
+          p {
+            text-wrap: pretty;
+          }
+        </style>
+      </helmet>
+
+      <div
+        style="width: 100%; overflow-x: hidden; background: var(--surface-page)"
+      >
+        <div
+          style="
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: space-between;
+            background: linear-gradient(
+              180deg,
+              var(--surface-page) 62%,
+              rgba(246, 246, 245, 0)
+            );
+          "
+        >
+          <a
+            href="#top"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 10px;
+              background: var(--surface-card);
+              box-shadow: var(--inset-hairline);
+              border-radius: var(--radius-pill);
+              padding: 8px 16px 8px 14px;
+            "
+          >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Wordmark"
+              name="KL"
+              size="22"
+              weight="500"
+              hint-size="26px,22px"
+            ></x-import>
+            <span
+              style="
+                font-size: 9.5px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                line-height: 1.25;
+                border-left: 1px solid var(--border-hairline);
+                padding-left: 10px;
+              "
+              >Cabinet<br />Dentaire</span
+            >
+          </a>
+
+          <nav
+            style="display:{{ deskFlex }};align-items:center;gap:2px;background:var(--surface-card);box-shadow:var(--inset-hairline);border-radius:var(--radius-pill);padding:6px"
+          >
+            <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+              <a
+                href="{{ l.href }}"
+                style="
+                  font-size: 12.5px;
+                  letter-spacing: -0.005em;
+                  padding: 7px 13px;
+                  border-radius: var(--radius-pill);
+                  color: var(--text-body);
+                "
+                style-hover="background:var(--surface-sunken);color:var(--text-strong)"
+                >{{ l.label }}</a
+              >
+            </sc-for>
+          </nav>
+
+          <div style="display: flex; align-items: center; gap: 8px">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                background: var(--surface-card);
+                box-shadow: var(--inset-hairline);
+                border-radius: var(--radius-pill);
+                padding: 4px;
+              "
+            >
+              <span
+                onClick="{{ setFr }}"
+                style="cursor:pointer;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:var(--radius-pill);background:{{ frBg }};color:{{ frFg }}"
+                >fr</span
+              >
+              <span
+                onClick="{{ setEn }}"
+                style="cursor:pointer;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:var(--radius-pill);background:{{ enBg }};color:{{ enFg }}"
+                >en</span
+              >
+            </div>
+            <span style="display:{{ deskFlex }}">
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                icon="arrow-up-right"
+                onClick="{{ openWa }}"
+                hint-size="180px,38px"
+                >{{ t.ctaBook }}</x-import
+              >
+            </span>
+            <span style="display:{{ mobFlex }}">
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.IconButton"
+                icon="menu"
+                variant="solid"
+                size="md"
+                label="Menu"
+                onClick="{{ openMenu }}"
+                hint-size="38px,38px"
+              ></x-import>
+            </span>
+          </div>
+        </div>
+
+        <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+          <div
+            style="
+              position: fixed;
+              inset: 0;
+              z-index: 200;
+              background: var(--surface-page);
+              padding: 12px;
+              display: flex;
+              flex-direction: column;
+              overflow-y: auto;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                flex: 0 0 auto;
+              "
+            >
+              <div
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 8px 4px;
+                "
+              >
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.Wordmark"
+                  name="KL"
+                  size="22"
+                  weight="500"
+                  hint-size="26px,22px"
+                ></x-import>
+                <span
+                  style="
+                    font-size: 9.5px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: var(--text-muted);
+                    line-height: 1.25;
+                  "
+                  >Cabinet Dentaire<br />Douala</span
+                >
+              </div>
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.IconButton"
+                icon="x"
+                variant="solid"
+                size="md"
+                label="Fermer"
+                onClick="{{ closeMenu }}"
+                hint-size="38px,38px"
+              ></x-import>
+            </div>
+
+            <div
+              style="
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 24px 4px;
+              "
+            >
+              <sc-for list="{{ navAll }}" as="l" hint-placeholder-count="8">
+                <a
+                  href="{{ l.href }}"
+                  onClick="{{ closeMenu }}"
+                  style="
+                    display: flex;
+                    align-items: baseline;
+                    gap: 14px;
+                    padding: 14px 0;
+                    border-bottom: 1px solid var(--border-hairline);
+                  "
+                >
+                  <span
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 10px;
+                      color: var(--text-faint);
+                    "
+                    >{{ l.n }}</span
+                  >
+                  <span
+                    style="
+                      font-family: var(--font-display);
+                      font-weight: 300;
+                      font-size: clamp(26px, 7.5vw, 38px);
+                      letter-spacing: -0.04em;
+                      line-height: 1;
+                      color: var(--text-strong);
+                    "
+                    >{{ l.label }}</span
+                  >
+                </a>
+              </sc-for>
+            </div>
+
+            <div
+              style="
+                flex: 0 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 4px;
+              "
+            >
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                size="lg"
+                icon="arrow-up-right"
+                onClick="{{ openWa }}"
+                style="{{ blockBtn }}"
+                hint-size="100%,46px"
+                >{{ t.ctaBook }}</x-import
+              >
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                  icon="phone"
+                  hint-size="auto,26px"
+                  >683 125 469</x-import
+                >
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                  icon="map-pin"
+                  hint-size="auto,26px"
+                  >Ndogbong, Douala</x-import
+                >
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <section
+          id="top"
+          data-screen-label="Hero"
+          style="
+            padding: clamp(8px, 2vw, 20px) 12px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+            align-items: end;
+          "
+        >
+          <div
+            style="
+              padding: clamp(16px, 4vw, 40px) clamp(4px, 2vw, 18px)
+                clamp(20px, 4vw, 44px);
+              align-self: stretch;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+            "
+          >
+            <div
+              style="
+                margin-bottom: auto;
+                padding-bottom: clamp(28px, 5vw, 56px);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  gap: clamp(12px, 2vw, 20px);
+                  align-items: stretch;
+                  flex-wrap: wrap;
+                "
+              >
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.MediaFrame"
+                  src="img/salle-bleue.jpg"
+                  alt="Salle de soins du cabinet"
+                  shape="rounded"
+                  ratio="4 / 3"
+                  style="{{ heroThumb }}"
+                  hint-size="156px,117px"
+                ></x-import>
+                <div
+                  style="
+                    flex: 1 1 200px;
+                    min-width: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 0;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: 14px;
+                      justify-content: space-between;
+                      padding: 11px 0;
+                      border-bottom: 1px solid var(--border-hairline);
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 9.5px;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--text-faint);
+                        flex: 0 0 auto;
+                      "
+                      >{{ t.addrTitle }}</span
+                    >
+                    <span
+                      style="
+                        font-size: 13px;
+                        color: var(--text-strong);
+                        letter-spacing: -0.01em;
+                        text-align: right;
+                      "
+                      >{{ t.addrValue }}</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: 14px;
+                      justify-content: space-between;
+                      padding: 11px 0;
+                      border-bottom: 1px solid var(--border-hairline);
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 9.5px;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--text-faint);
+                        flex: 0 0 auto;
+                      "
+                      >{{ t.hoursTitle }}</span
+                    >
+                    <span
+                      style="
+                        font-size: 13px;
+                        color: var(--text-strong);
+                        letter-spacing: -0.01em;
+                        text-align: right;
+                      "
+                      >{{ t.hoursValue }}</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: 14px;
+                      justify-content: space-between;
+                      padding: 11px 0;
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 9.5px;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--text-faint);
+                        flex: 0 0 auto;
+                      "
+                      >WhatsApp</span
+                    >
+                    <span
+                      style="
+                        font-size: 13px;
+                        color: var(--text-strong);
+                        letter-spacing: -0.01em;
+                        text-align: right;
+                      "
+                      >+237 683 125 469</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+              hint-size="220px,14px"
+              >{{ t.heroEyebrow }}</x-import
+            >
+            <h1
+              style="
+                margin: 18px 0 0;
+                font-family: var(--font-display);
+                font-weight: 300;
+                font-size: clamp(40px, 8.4vw, 86px);
+                letter-spacing: -0.045em;
+                line-height: 0.94;
+                color: var(--text-strong);
+              "
+            >
+              {{ t.heroTitle }}
+            </h1>
+            <p
+              style="
+                margin: 22px 0 0;
+                max-width: 46ch;
+                font-size: clamp(14.5px, 1.5vw, 16px);
+                line-height: 1.5;
+                color: var(--text-body);
+              "
+            >
+              {{ t.heroBody }}
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 28px;
+              "
+            >
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                size="lg"
+                icon="arrow-up-right"
+                onClick="{{ openWa }}"
+                hint-size="200px,46px"
+                >{{ t.ctaBook }}</x-import
+              >
+              <a href="#services"
+                ><x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                  size="lg"
+                  variant="outline"
+                  trailingDot="{{ true }}"
+                  hint-size="150px,46px"
+                  >{{ t.ctaServices }}</x-import
+                ></a
+              >
+            </div>
+            <div
+              style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px"
+            >
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                dot="{{ true }}"
+                hint-size="auto,26px"
+                >{{ t.tagCare }}</x-import
+              >
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                dot="{{ true }}"
+                hint-size="auto,26px"
+                >{{ t.tagPrev }}</x-import
+              >
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                dot="{{ true }}"
+                hint-size="auto,26px"
+                >{{ t.tagAesth }}</x-import
+              >
+            </div>
+          </div>
+
+          <div style="position: relative">
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.MediaFrame"
+              src="img/hero-soin.jpg"
+              alt="Soin dentaire au cabinet"
+              shape="rounded"
+              ratio="4 / 5"
+              scrim="{{ true }}"
+              style="{{ heroMedia }}"
+              hint-size="100%,420px"
+            >
+              <div
+                style="
+                  position: absolute;
+                  left: 14px;
+                  right: 14px;
+                  bottom: 14px;
+                  display: flex;
+                  align-items: flex-end;
+                  justify-content: space-between;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                  tone="glass"
+                  icon="message-circle"
+                  hint-size="200px,30px"
+                  >WhatsApp 683 125 469</x-import
+                >
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.IconButton"
+                  icon="arrow-up-right"
+                  variant="glass"
+                  size="lg"
+                  label="WhatsApp"
+                  onClick="{{ openWa }}"
+                  hint-size="52px,52px"
+                ></x-import>
+              </div>
+            </x-import>
+            <p
+              style="
+                margin: 12px 0 0;
+                text-align: center;
+                font-size: 12px;
+                color: var(--text-muted);
+              "
+            >
+              {{ t.heroCaption }}
+            </p>
+          </div>
+        </section>
+
+        <div style="margin: clamp(28px, 5vw, 56px) 0 0">
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.Ticker"
+            items="{{ tickerItems }}"
+            size="{{ tickerSize }}"
+            hint-size="100%,80px"
+          ></x-import>
+        </div>
+
+        <section
+          id="about"
+          data-screen-label="À propos"
+          style="padding: clamp(40px, 7vw, 84px) 12px 0"
+        >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+            index="01"
+            hint-size="140px,14px"
+            >{{ t.aboutLabel }}</x-import
+          >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 12px;
+              margin-top: 20px;
+              align-items: start;
+            "
+          >
+            <div style="padding: clamp(8px, 2vw, 24px) clamp(4px, 1.5vw, 14px)">
+              <h2
+                style="
+                  margin: 0;
+                  font-family: var(--font-display);
+                  font-weight: 300;
+                  font-size: clamp(30px, 4.6vw, 56px);
+                  letter-spacing: -0.04em;
+                  line-height: 1;
+                  color: var(--text-strong);
+                "
+              >
+                {{ t.aboutTitle }}
+              </h2>
+              <p
+                style="
+                  margin: 20px 0 0;
+                  max-width: 52ch;
+                  font-size: 15px;
+                  line-height: 1.55;
+                "
+              >
+                {{ t.aboutBody1 }}
+              </p>
+              <p
+                style="
+                  margin: 14px 0 0;
+                  max-width: 52ch;
+                  font-size: 15px;
+                  line-height: 1.55;
+                "
+              >
+                {{ t.aboutBody2 }}
+              </p>
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 18px;
+                  margin-top: 28px;
+                  align-items: center;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 9px;
+                    width: 96px;
+                  "
+                >
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.StatDial"
+                    value="10"
+                    size="96"
+                    hint-size="96px,96px"
+                  ></x-import>
+                  <span
+                    style="
+                      font-size: 11px;
+                      line-height: 1.3;
+                      text-align: center;
+                      color: var(--text-muted);
+                    "
+                    >{{ t.statCare }}</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 9px;
+                    width: 96px;
+                  "
+                >
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.StatDial"
+                    value="7/7"
+                    size="96"
+                    hint-size="96px,96px"
+                  ></x-import>
+                  <span
+                    style="
+                      font-size: 11px;
+                      line-height: 1.3;
+                      text-align: center;
+                      color: var(--text-muted);
+                    "
+                    >{{ t.statReach }}</span
+                  >
+                </div>
+                <a href="#contact"
+                  ><x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                    variant="outline"
+                    trailingDot="{{ true }}"
+                    hint-size="140px,38px"
+                    >{{ t.ctaContact }}</x-import
+                  ></a
+                >
+              </div>
+            </div>
+
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+              tone="card"
+              pad="0"
+              hint-size="100%,420px"
+            >
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.MediaFrame"
+                src="img/radio-panoramique.jpg"
+                alt="Lecture d'une radiographie panoramique"
+                shape="rounded"
+                ratio="16 / 11"
+                style="{{ flatMedia }}"
+                hint-size="100%,240px"
+              ></x-import>
+              <div style="padding: clamp(18px, 3vw, 28px)">
+                <div style="display: flex; align-items: center; gap: 12px">
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.NumberBadge"
+                    size="34"
+                    hint-size="34px,34px"
+                    >KL</x-import
+                  >
+                  <div>
+                    <div
+                      style="
+                        font-size: 17px;
+                        font-weight: 500;
+                        letter-spacing: -0.015em;
+                        color: var(--text-strong);
+                      "
+                    >
+                      {{ practitioner }}
+                    </div>
+                    <div
+                      style="
+                        font-size: 12px;
+                        color: var(--text-muted);
+                        margin-top: 3px;
+                      "
+                    >
+                      {{ t.drRole }}
+                    </div>
+                  </div>
+                </div>
+                <p
+                  style="margin: 16px 0 0; font-size: 14.5px; line-height: 1.55"
+                >
+                  {{ t.drBody }}
+                </p>
+              </div>
+            </x-import>
+          </div>
+        </section>
+
+        <section
+          id="services"
+          data-screen-label="Services"
+          style="padding: clamp(44px, 7vw, 90px) 12px 0"
+        >
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 16px;
+              align-items: baseline;
+              justify-content: space-between;
+            "
+          >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+              index="02"
+              hint-size="140px,14px"
+              >{{ t.servicesLabel }}</x-import
+            >
+            <p
+              style="
+                margin: 0;
+                max-width: 40ch;
+                font-size: 13.5px;
+                color: var(--text-muted);
+                line-height: 1.5;
+              "
+            >
+              {{ t.servicesSub }}
+            </p>
+          </div>
+          <h2
+            style="
+              margin: 18px 0 26px;
+              max-width: 22ch;
+              font-family: var(--font-display);
+              font-weight: 300;
+              font-size: clamp(30px, 5vw, 60px);
+              letter-spacing: -0.04em;
+              line-height: 1;
+              color: var(--text-strong);
+            "
+          >
+            {{ t.servicesTitle }}
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+              gap: 12px;
+            "
+          >
+            <sc-for list="{{ services }}" as="s" hint-placeholder-count="10">
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+                tone="card"
+                hint-size="100%,196px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    min-height: 164px;
+                    gap: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                    "
+                  >
+                    <span
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: var(--surface-tint);
+                        color: var(--text-strong);
+                      "
+                    >
+                      <x-import
+                        component-from-global-scope="HaloDesignSystem_fa75a2.Icon"
+                        name="{{ s.icon }}"
+                        size="17"
+                        hint-size="17px,17px"
+                      ></x-import>
+                    </span>
+                    <span
+                      style="
+                        font-family: var(--font-mono);
+                        font-size: 10px;
+                        color: var(--text-faint);
+                      "
+                      >{{ s.n }}</span
+                    >
+                  </div>
+                  <div style="margin-top: auto">
+                    <h3
+                      style="
+                        margin: 0;
+                        font-size: 17px;
+                        font-weight: 500;
+                        letter-spacing: -0.02em;
+                        line-height: 1.2;
+                        color: var(--text-strong);
+                      "
+                    >
+                      {{ s.title }}
+                    </h3>
+                    <p
+                      style="
+                        margin: 8px 0 0;
+                        font-size: 13.5px;
+                        line-height: 1.5;
+                        color: var(--text-body);
+                      "
+                    >
+                      {{ s.desc }}
+                    </p>
+                  </div>
+                </div>
+              </x-import>
+            </sc-for>
+          </div>
+        </section>
+
+        <section
+          id="gallery"
+          data-screen-label="Le cabinet"
+          style="padding: clamp(44px, 7vw, 90px) 12px 0"
+        >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+            index="03"
+            hint-size="150px,14px"
+            >{{ t.galleryLabel }}</x-import
+          >
+          <h2
+            style="
+              margin: 18px 0 26px;
+              max-width: 20ch;
+              font-family: var(--font-display);
+              font-weight: 300;
+              font-size: clamp(30px, 5vw, 60px);
+              letter-spacing: -0.04em;
+              line-height: 1;
+              color: var(--text-strong);
+            "
+          >
+            {{ t.galleryTitle }}
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+              gap: 12px;
+            "
+          >
+            <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6">
+              <div style="position: relative">
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.MediaFrame"
+                  src="{{ g.src }}"
+                  alt="{{ g.cap }}"
+                  shape="rounded"
+                  ratio="3 / 4"
+                  hint-size="100%,300px"
+                ></x-import>
+                <div style="position: absolute; left: 12px; bottom: 12px">
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+                    tone="glass"
+                    hint-size="auto,26px"
+                    >{{ g.cap }}</x-import
+                  >
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <p
+            style="margin: 14px 0 0; font-size: 12px; color: var(--text-muted)"
+          >
+            {{ t.galleryNote }}
+          </p>
+        </section>
+
+        <sc-if value="{{ showPricing }}" hint-placeholder-val="{{ true }}">
+          <section
+            id="pricing"
+            data-screen-label="Tarifs"
+            style="padding: clamp(44px, 7vw, 90px) 12px 0"
+          >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+              index="04"
+              hint-size="110px,14px"
+              >{{ t.pricingLabel }}</x-import
+            >
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 12px;
+                margin-top: 20px;
+                align-items: start;
+              "
+            >
+              <div
+                style="padding: clamp(8px, 2vw, 20px) clamp(4px, 1.5vw, 14px)"
+              >
+                <h2
+                  style="
+                    margin: 0;
+                    font-family: var(--font-display);
+                    font-weight: 300;
+                    font-size: clamp(28px, 4.4vw, 52px);
+                    letter-spacing: -0.04em;
+                    line-height: 1;
+                    color: var(--text-strong);
+                  "
+                >
+                  {{ t.pricingTitle }}
+                </h2>
+                <p
+                  style="
+                    margin: 18px 0 0;
+                    max-width: 46ch;
+                    font-size: 15px;
+                    line-height: 1.55;
+                  "
+                >
+                  {{ t.pricingBody }}
+                </p>
+                <div style="margin-top: 22px">
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                    icon="arrow-up-right"
+                    onClick="{{ openWa }}"
+                    hint-size="190px,38px"
+                    >{{ t.ctaQuote }}</x-import
+                  >
+                </div>
+              </div>
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+                tone="card"
+                pad="clamp(16px,2.4vw,26px)"
+                hint-size="100%,420px"
+              >
+                <sc-for list="{{ prices }}" as="p" hint-placeholder-count="9">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      justify-content: space-between;
+                      padding: 13px 0;
+                      border-bottom: 1px solid var(--border-hairline);
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 14px;
+                        color: var(--text-strong);
+                        letter-spacing: -0.01em;
+                      "
+                      >{{ p.label }}</span
+                    >
+                    <span
+                      style="
+                        font-family: var(--font-mono);
+                        font-size: 10.5px;
+                        letter-spacing: 0.06em;
+                        text-transform: uppercase;
+                        color: var(--text-muted);
+                        white-space: nowrap;
+                      "
+                      >{{ p.value }}</span
+                    >
+                  </div>
+                </sc-for>
+              </x-import>
+            </div>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ showReviews }}" hint-placeholder-val="{{ true }}">
+          <section
+            id="reviews"
+            data-screen-label="Avis"
+            style="padding: clamp(44px, 7vw, 90px) 12px 0"
+          >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+              index="05"
+              hint-size="110px,14px"
+              >{{ t.reviewsLabel }}</x-import
+            >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+              tone="sunken"
+              pad="clamp(22px,4vw,44px)"
+              style="{{ blockTop }}"
+              hint-size="100%,220px"
+            >
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                  gap: 24px;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <h2
+                    style="
+                      margin: 0;
+                      font-family: var(--font-display);
+                      font-weight: 300;
+                      font-size: clamp(26px, 4vw, 46px);
+                      letter-spacing: -0.04em;
+                      line-height: 1.02;
+                      color: var(--text-strong);
+                    "
+                  >
+                    {{ t.reviewsTitle }}
+                  </h2>
+                  <p
+                    style="
+                      margin: 16px 0 0;
+                      max-width: 46ch;
+                      font-size: 15px;
+                      line-height: 1.55;
+                    "
+                  >
+                    {{ t.reviewsBody }}
+                  </p>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                    icon="arrow-up-right"
+                    onClick="{{ openFb }}"
+                    hint-size="170px,38px"
+                    >{{ t.reviewsCta }}</x-import
+                  >
+                  <x-import
+                    component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                    variant="outline"
+                    trailingDot="{{ true }}"
+                    onClick="{{ openWa }}"
+                    hint-size="150px,38px"
+                    >{{ t.ctaBook }}</x-import
+                  >
+                </div>
+              </div>
+            </x-import>
+          </section>
+        </sc-if>
+
+        <section
+          id="tips"
+          data-screen-label="Conseils"
+          style="padding: clamp(44px, 7vw, 90px) 12px 0"
+        >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+            index="06"
+            hint-size="130px,14px"
+            >{{ t.tipsLabel }}</x-import
+          >
+          <h2
+            style="
+              margin: 18px 0 26px;
+              max-width: 20ch;
+              font-family: var(--font-display);
+              font-weight: 300;
+              font-size: clamp(30px, 5vw, 60px);
+              letter-spacing: -0.04em;
+              line-height: 1;
+              color: var(--text-strong);
+            "
+          >
+            {{ t.tipsTitle }}
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+              gap: 12px;
+            "
+          >
+            <sc-for list="{{ tips }}" as="a" hint-placeholder-count="3">
+              <x-import
+                component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+                tone="card"
+                pad="0"
+                hint-size="100%,360px"
+              >
+                <x-import
+                  component-from-global-scope="HaloDesignSystem_fa75a2.MediaFrame"
+                  src="{{ a.src }}"
+                  alt="{{ a.title }}"
+                  shape="rounded"
+                  ratio="16 / 10"
+                  style="{{ flatMedia }}"
+                  hint-size="100%,180px"
+                ></x-import>
+                <div style="padding: clamp(18px, 2.6vw, 24px)">
+                  <span
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 10px;
+                      letter-spacing: 0.08em;
+                      text-transform: uppercase;
+                      color: var(--text-faint);
+                    "
+                    >{{ a.kicker }}</span
+                  >
+                  <h3
+                    style="
+                      margin: 10px 0 0;
+                      font-size: 19px;
+                      font-weight: 500;
+                      letter-spacing: -0.025em;
+                      line-height: 1.18;
+                      color: var(--text-strong);
+                    "
+                  >
+                    {{ a.title }}
+                  </h3>
+                  <p
+                    style="margin: 10px 0 0; font-size: 14px; line-height: 1.5"
+                  >
+                    {{ a.body }}
+                  </p>
+                </div>
+              </x-import>
+            </sc-for>
+          </div>
+        </section>
+
+        <section
+          id="faq"
+          data-screen-label="FAQ"
+          style="padding: clamp(44px, 7vw, 90px) 12px 0"
+        >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+            index="07"
+            hint-size="130px,14px"
+            >{{ t.faqLabel }}</x-import
+          >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: clamp(12px, 3vw, 48px);
+              margin-top: 20px;
+              align-items: start;
+            "
+          >
+            <h2
+              style="
+                margin: 0;
+                font-family: var(--font-display);
+                font-weight: 300;
+                font-size: clamp(28px, 4.4vw, 52px);
+                letter-spacing: -0.04em;
+                line-height: 1;
+                color: var(--text-strong);
+              "
+            >
+              {{ t.faqTitle }}
+            </h2>
+            <div>
+              <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+                <div style="border-top: 1px solid var(--border-hairline)">
+                  <div
+                    onClick="{{ f.toggle }}"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 16px;
+                      justify-content: space-between;
+                      padding: 17px 0;
+                      cursor: pointer;
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: clamp(15px, 1.8vw, 17px);
+                        font-weight: 500;
+                        letter-spacing: -0.015em;
+                        color: var(--text-strong);
+                        line-height: 1.3;
+                      "
+                      >{{ f.q }}</span
+                    >
+                    <span
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        flex: 0 0 auto;
+                        border-radius: 50%;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-shadow: var(--inset-hairline);
+                        background: var(--surface-card);
+                        font-size: 14px;
+                        color: var(--text-strong);
+                      "
+                      >{{ f.sign }}</span
+                    >
+                  </div>
+                  <sc-if
+                    value="{{ f.open }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <p
+                      style="
+                        margin: 0 0 18px;
+                        max-width: 62ch;
+                        font-size: 14.5px;
+                        line-height: 1.55;
+                      "
+                    >
+                      {{ f.a }}
+                    </p>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          data-screen-label="Contact"
+          style="padding: clamp(44px, 7vw, 90px) 12px 12px"
+        >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.SectionLabel"
+            index="08"
+            hint-size="120px,14px"
+            >{{ t.contactLabel }}</x-import
+          >
+          <h2
+            style="
+              margin: 18px 0 26px;
+              max-width: 22ch;
+              font-family: var(--font-display);
+              font-weight: 300;
+              font-size: clamp(30px, 5vw, 60px);
+              letter-spacing: -0.04em;
+              line-height: 1;
+              color: var(--text-strong);
+            "
+          >
+            {{ t.contactTitle }}
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 12px;
+            "
+          >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+              tone="inverse"
+              pad="clamp(20px,3vw,30px)"
+              hint-size="100%,240px"
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  height: 100%;
+                  min-height: 200px;
+                "
+              >
+                <span
+                  style="
+                    font-size: 10.5px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: rgba(255, 255, 255, 0.62);
+                  "
+                  >{{ t.hoursTitle }}</span
+                >
+                <div style="margin-top: auto">
+                  <div
+                    style="
+                      font-family: var(--font-display);
+                      font-weight: 300;
+                      font-size: clamp(26px, 3.4vw, 38px);
+                      letter-spacing: -0.04em;
+                      line-height: 1;
+                      color: var(--text-invert);
+                    "
+                  >
+                    {{ t.hoursValue }}
+                  </div>
+                  <p
+                    style="
+                      margin: 12px 0 0;
+                      font-size: 13px;
+                      line-height: 1.5;
+                      color: rgba(255, 255, 255, 0.72);
+                    "
+                  >
+                    {{ t.hoursNote }}
+                  </p>
+                </div>
+              </div>
+            </x-import>
+
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+              tone="card"
+              pad="clamp(20px,3vw,30px)"
+              hint-size="100%,240px"
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  height: 100%;
+                  min-height: 200px;
+                  gap: 18px;
+                "
+              >
+                <span
+                  style="
+                    font-size: 10.5px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: var(--text-muted);
+                  "
+                  >{{ t.addrTitle }}</span
+                >
+                <div style="margin-top: auto">
+                  <div
+                    style="
+                      font-size: 19px;
+                      font-weight: 500;
+                      letter-spacing: -0.02em;
+                      color: var(--text-strong);
+                      line-height: 1.25;
+                    "
+                  >
+                    {{ t.addrValue }}
+                  </div>
+                  <div
+                    style="
+                      margin-top: 14px;
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: 8px;
+                    "
+                  >
+                    <x-import
+                      component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+                      variant="outline"
+                      size="sm"
+                      icon="map-pin"
+                      onClick="{{ openMap }}"
+                      hint-size="160px,32px"
+                      >{{ t.ctaMap }}</x-import
+                    >
+                  </div>
+                </div>
+              </div>
+            </x-import>
+
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Card"
+              tone="card"
+              pad="clamp(20px,3vw,30px)"
+              hint-size="100%,240px"
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  height: 100%;
+                  min-height: 200px;
+                  gap: 18px;
+                "
+              >
+                <span
+                  style="
+                    font-size: 10.5px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: var(--text-muted);
+                  "
+                  >{{ t.reachTitle }}</span
+                >
+                <div
+                  style="
+                    margin-top: auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                  "
+                >
+                  <a
+                    href="https://wa.me/237683125469"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 10px;
+                      font-size: 15px;
+                      letter-spacing: -0.01em;
+                      color: var(--text-strong);
+                    "
+                  >
+                    <span style="display: inline-flex; flex: 0 0 auto"
+                      ><x-import
+                        component-from-global-scope="HaloDesignSystem_fa75a2.Icon"
+                        name="message-circle"
+                        size="15"
+                        hint-size="15px,15px"
+                      ></x-import
+                    ></span>
+                    <span>+237 683 125 469</span></a
+                  >
+                  <a
+                    href="tel:+237683125469"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 10px;
+                      font-size: 15px;
+                      letter-spacing: -0.01em;
+                      color: var(--text-strong);
+                    "
+                  >
+                    <span style="display: inline-flex; flex: 0 0 auto"
+                      ><x-import
+                        component-from-global-scope="HaloDesignSystem_fa75a2.Icon"
+                        name="phone"
+                        size="15"
+                        hint-size="15px,15px"
+                      ></x-import
+                    ></span>
+                    <span>+237 6 83 12 54 69</span></a
+                  >
+                  <a
+                    href="mailto:lionel.kollo.pro@gmail.com"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 10px;
+                      font-size: 14px;
+                      letter-spacing: -0.01em;
+                      color: var(--text-strong);
+                      word-break: break-all;
+                    "
+                  >
+                    <span style="display: inline-flex; flex: 0 0 auto"
+                      ><x-import
+                        component-from-global-scope="HaloDesignSystem_fa75a2.Icon"
+                        name="mail"
+                        size="15"
+                        hint-size="15px,15px"
+                      ></x-import
+                    ></span>
+                    <span>lionel.kollo.pro@gmail.com</span></a
+                  >
+                  <a
+                    href="https://facebook.com/profile.php?id=61594091849398"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 10px;
+                      font-size: 15px;
+                      letter-spacing: -0.01em;
+                      color: var(--text-strong);
+                    "
+                  >
+                    <span style="display: inline-flex; flex: 0 0 auto"
+                      ><x-import
+                        component-from-global-scope="HaloDesignSystem_fa75a2.Icon"
+                        name="facebook"
+                        size="15"
+                        hint-size="15px,15px"
+                      ></x-import
+                    ></span>
+                    <span>{{ t.ctaFb }}</span></a
+                  >
+                </div>
+              </div>
+            </x-import>
+          </div>
+        </section>
+
+        <footer
+          style="
+            padding: clamp(32px, 5vw, 56px) 12px 24px;
+            border-top: 1px solid var(--border-hairline);
+            margin: 0 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            align-items: end;
+          "
+        >
+          <div>
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Wordmark"
+              name="Cabinet Dentaire KL"
+              size="30"
+              weight="300"
+              hint-size="240px,30px"
+            ></x-import>
+            <p
+              style="
+                margin: 12px 0 0;
+                font-size: 13px;
+                color: var(--text-muted);
+              "
+            >
+              {{ t.footNote }}
+            </p>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              justify-content: flex-start;
+            "
+          >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+              icon="map-pin"
+              hint-size="auto,26px"
+              >Ndogbong, Douala</x-import
+            >
+            <x-import
+              component-from-global-scope="HaloDesignSystem_fa75a2.Chip"
+              icon="message-circle"
+              hint-size="auto,26px"
+              >683 125 469</x-import
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+              align-items: flex-start;
+            "
+          >
+            <div style="font-size: 11.5px; color: var(--text-faint)">
+              {{ t.rights }}
+            </div>
+            <a
+              href="https://wintercodenkjj.github.io/wintercodeNKJJ/"
+              target="_blank"
+              rel="noopener"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 11.5px;
+                letter-spacing: 0.02em;
+                color: var(--text-body);
+                background: var(--surface-card);
+                box-shadow: var(--inset-hairline);
+                border-radius: var(--radius-pill);
+                padding: 7px 13px;
+              "
+              style-hover="background:var(--surface-sunken);color:var(--text-strong)"
+            >
+              <span
+                style="
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 50%;
+                  background: currentColor;
+                "
+              ></span
+              >{{ t.credit }}</a
+            >
+          </div>
+        </footer>
+
+        <div
+          style="
+            position: fixed;
+            right: 12px;
+            bottom: 12px;
+            z-index: 70;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.Button"
+            icon="message-circle"
+            onClick="{{ openWa }}"
+            style="{{ floatBtn }}"
+            hint-size="150px,38px"
+            >{{ t.ctaBook }}</x-import
+          >
+          <x-import
+            component-from-global-scope="HaloDesignSystem_fa75a2.IconButton"
+            icon="arrow-up"
+            variant="outline"
+            size="md"
+            label="Haut de page"
+            onClick="{{ toTop }}"
+            hint-size="38px,38px"
+          ></x-import>
+        </div>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"defaultLang":{"editor":"enum","options":["fr","en"],"default":"fr","tsType":"&apos;fr&apos; | &apos;en&apos;","section":"Contenu"},"practitioner":{"editor":"text","default":"Dr. James Leo","tsType":"string","section":"Contenu"},"showPricing":{"editor":"boolean","default":true,"tsType":"boolean","section":"Sections"},"showReviews":{"editor":"boolean","default":true,"tsType":"boolean","section":"Sections"}}'
+    >
+      class Component extends DCLogic {
+        state = { lang: null, menu: false, w: 1280, open: {} };
+
+        componentDidMount() {
+          this._r = () => this.setState({ w: window.innerWidth });
+          window.addEventListener('resize', this._r);
+          this.setState({ w: window.innerWidth });
+        }
+        componentWillUnmount() { window.removeEventListener('resize', this._r); }
+
+        dict() {
+          return {
+            fr: {
+              nav: ['Accueil', 'À propos', 'Les soins', 'Le cabinet', 'Tarifs', 'Avis', 'Conseils', 'Questions', 'Contact'],
+              heroEyebrow: 'Ndogbong · Douala · Cameroun',
+              heroTitle: 'Votre sourire, notre priorité.',
+              heroBody: 'Soins, prévention et esthétique dentaire à Ndogbong. Nous souhaitons créer un espace où chaque patient se sent écouté, rassuré et correctement accompagné dans la prise en charge de sa santé bucco-dentaire.',
+              heroCaption: '(cabinet dentaire — Ndogbong et environs, Douala)',
+              ctaBook: 'prendre rendez-vous', ctaServices: 'voir les soins', ctaContact: 'nous joindre',
+              ctaQuote: 'demander une estimation', ctaMap: 'ouvrir l’itinéraire', ctaFb: 'page Facebook',
+              tagCare: 'soins', tagPrev: 'prévention', tagAesth: 'esthétique dentaire',
+              aboutLabel: 'À propos',
+              aboutTitle: 'Un cabinet pensé autour de l’écoute.',
+              aboutBody1: 'Votre santé bucco-dentaire nous tient à cœur. Du premier examen au suivi, chaque étape est expliquée avant d’être engagée.',
+              aboutBody2: 'Le cabinet réunit les soins courants, la prévention et l’esthétique dentaire dans un cadre propre, calme et professionnel.',
+              drRole: 'Chirurgien-Dentiste',
+              drBody: 'Consultation, diagnostic et orientation vers le traitement adapté. Les soins sont réalisés au cabinet, à Ndogbong.',
+              statCare: 'soins proposés', statReach: 'joignable sur WhatsApp',
+              servicesLabel: 'Les soins',
+              servicesTitle: 'Dix soins, un seul interlocuteur.',
+              servicesSub: 'Chaque prise en charge commence par un examen et un diagnostic expliqué.',
+              galleryLabel: 'Le cabinet',
+              galleryTitle: 'Un cadre propre, calme, équipé.',
+              galleryNote: 'Photos du cabinet et de l’équipement. D’autres vues seront ajoutées.',
+              pricingLabel: 'Tarifs',
+              pricingTitle: 'Tarifs communiqués sur demande.',
+              pricingBody: 'Le devis est établi après l’examen, en fonction du soin retenu et de son étendue. Écrivez-nous sur WhatsApp pour obtenir une estimation avant de venir.',
+              onRequest: 'sur demande',
+              reviewsLabel: 'Avis',
+              reviewsTitle: 'Le cabinet vient d’ouvrir ses portes.',
+              reviewsBody: 'Aucun avis n’a encore été publié. Si nous vous avons reçu, votre retour aidera les prochains patients à se décider.',
+              reviewsCta: 'laisser un avis',
+              tipsLabel: 'Conseils', tipsTitle: 'Comprendre avant de soigner.',
+              faqLabel: 'Questions', faqTitle: 'Les questions que l’on nous pose.',
+              contactLabel: 'Contact', contactTitle: 'Prenez rendez-vous sur WhatsApp.',
+              hoursTitle: 'Horaires', hoursValue: 'Joignable 7j/7 sur WhatsApp',
+              hoursNote: 'Les horaires d’ouverture du cabinet restent à confirmer et seront affichés ici.',
+              addrTitle: 'Adresse', addrValue: 'Ndogbong et environs, Douala, Cameroun',
+              reachTitle: 'Nous joindre',
+              footNote: 'Soins • Prévention • Esthétique dentaire',
+              rights: '© 2026 Cabinet Dentaire KL — Douala. Tous droits réservés.',
+              credit: 'site développé par wintercodeNKJJ ↗',
+              prices: ['Consultation dentaire', 'Détartrage', 'Traitement des caries', 'Soin endodontique', 'Blanchiment dentaire', 'Orthodontie — bilan', 'Prothèse dentaire', 'Extraction dentaire', 'Urgence dentaire'],
+              tips: [
+                { kicker: 'Prévention', title: 'Le détartrage, pourquoi c’est essentiel', body: 'Gencives qui saignent, mauvaise haleine, dépôts visibles sur les dents : autant de signes qu’un détartrage est nécessaire.' },
+                { kicker: 'Urgences', title: 'Une dent qui fait mal : que faire ?', body: 'La douleur dentaire ne se règle pas avec le temps. Soulagez-la, puis consultez rapidement pour traiter la cause.' },
+                { kicker: 'Hygiène', title: 'Les bons gestes au quotidien', body: 'Brossage matin et soir, fil dentaire, contrôle régulier : l’essentiel de la prévention tient en trois habitudes.' }
+              ],
+              faqs: [
+                { q: 'Comment prendre rendez-vous ?', a: 'Écrivez-nous sur WhatsApp au 683 125 469. Indiquez votre nom, le motif et vos disponibilités ; nous vous proposons un créneau.' },
+                { q: 'Où se trouve le cabinet ?', a: 'À Ndogbong, Douala. L’adresse précise et le point de repère vous sont envoyés à la confirmation du rendez-vous.' },
+                { q: 'Prenez-vous les urgences dentaires ?', a: 'Oui. En cas de douleur aiguë, de dent cassée ou d’abcès, contactez-nous sur WhatsApp en précisant « urgence ».' },
+                { q: 'Quels sont vos tarifs ?', a: 'Ils dépendent du soin. Le devis est remis après l’examen, avant tout traitement.' },
+                { q: 'Faut-il apporter une radiographie ?', a: 'Ce n’est pas nécessaire. Si vous en avez une récente, apportez-la : elle fait gagner du temps.' },
+                { q: 'À quelle fréquence consulter ?', a: 'Un contrôle tous les six à douze mois suffit pour la plupart des patients, plus souvent en cas de problème gingival.' }
+              ],
+              services: [
+                { t: 'Soins des gencives', d: 'Prévention et prise en charge des problèmes gingivaux et parodontaux.' },
+                { t: 'Traitement des caries', d: 'Prise en charge des dents cariées et restauration dentaire.' },
+                { t: 'Blanchiment dentaire', d: 'Solutions d’éclaircissement dentaire réalisées dans un cadre professionnel.' },
+                { t: 'Orthodontie', d: 'Correction de l’alignement et de la position des dents.' },
+                { t: 'Soins endodontiques', d: 'Traitement des infections ou inflammations de la pulpe dentaire (dévitalisation).' },
+                { t: 'Extraction dentaire', d: 'Extraction des dents lorsque celle-ci est indiquée.' },
+                { t: 'Urgences dentaires', d: 'Prise en charge des douleurs et situations nécessitant une consultation rapide.' },
+                { t: 'Prothèses dentaires', d: 'Remplacement des dents absentes par des solutions prothétiques adaptées.' },
+                { t: 'Détartrage', d: 'Élimination du tartre et conseils pour maintenir une bonne hygiène bucco-dentaire.' },
+                { t: 'Consultation dentaire', d: 'Examen bucco-dentaire, diagnostic et orientation vers le traitement adapté.' }
+              ],
+              gallery: ['Salle de soins', 'Instruments stérilisés', 'Unit dentaire', 'Radiographie panoramique', 'Consultation', 'Suivi des enfants']
+            },
+            en: {
+              nav: ['Home', 'About', 'Treatments', 'The practice', 'Pricing', 'Reviews', 'Tips', 'Questions', 'Contact'],
+              heroEyebrow: 'Ndogbong · Douala · Cameroon',
+              heroTitle: 'Your smile, our priority.',
+              heroBody: 'Dental care, prevention and cosmetic dentistry in Ndogbong. We want a practice where every patient feels heard, reassured and properly supported through their oral health care.',
+              heroCaption: '(dental practice — Ndogbong and surrounding areas, Douala)',
+              ctaBook: 'book an appointment', ctaServices: 'see treatments', ctaContact: 'get in touch',
+              ctaQuote: 'ask for an estimate', ctaMap: 'open directions', ctaFb: 'Facebook page',
+              tagCare: 'care', tagPrev: 'prevention', tagAesth: 'cosmetic dentistry',
+              aboutLabel: 'About',
+              aboutTitle: 'A practice built around listening.',
+              aboutBody1: 'Your oral health matters to us. From the first examination to follow-up, every step is explained before it is started.',
+              aboutBody2: 'The practice brings together everyday treatment, prevention and cosmetic dentistry in a clean, calm, professional setting.',
+              drRole: 'Dental Surgeon',
+              drBody: 'Consultation, diagnosis and guidance towards the right treatment. Care is delivered at the practice in Ndogbong.',
+              statCare: 'treatments offered', statReach: 'reachable on WhatsApp',
+              servicesLabel: 'Treatments',
+              servicesTitle: 'Ten treatments, one point of contact.',
+              servicesSub: 'Every case starts with an examination and a diagnosis you can understand.',
+              galleryLabel: 'The practice',
+              galleryTitle: 'A clean, calm, equipped setting.',
+              galleryNote: 'Photos of the practice and its equipment. More views will be added.',
+              pricingLabel: 'Pricing',
+              pricingTitle: 'Prices are shared on request.',
+              pricingBody: 'A quote is drawn up after the examination, based on the treatment chosen and its extent. Message us on WhatsApp for an estimate before you come in.',
+              onRequest: 'on request',
+              reviewsLabel: 'Reviews',
+              reviewsTitle: 'The practice has just opened.',
+              reviewsBody: 'No reviews have been published yet. If we have treated you, your feedback will help the next patients decide.',
+              reviewsCta: 'leave a review',
+              tipsLabel: 'Tips', tipsTitle: 'Understand before you treat.',
+              faqLabel: 'Questions', faqTitle: 'The questions we are asked.',
+              contactLabel: 'Contact', contactTitle: 'Book your appointment on WhatsApp.',
+              hoursTitle: 'Hours', hoursValue: 'Reachable 7 days a week on WhatsApp',
+              hoursNote: 'The practice’s opening hours are still to be confirmed and will be shown here.',
+              addrTitle: 'Address', addrValue: 'Ndogbong and surrounding areas, Douala, Cameroon',
+              reachTitle: 'Reach us',
+              footNote: 'Care • Prevention • Cosmetic dentistry',
+              rights: '© 2026 Cabinet Dentaire KL — Douala. All rights reserved.',
+              credit: 'site built by wintercodeNKJJ ↗',
+              prices: ['Dental consultation', 'Scaling', 'Cavity treatment', 'Root canal treatment', 'Teeth whitening', 'Orthodontics — assessment', 'Dental prosthesis', 'Tooth extraction', 'Dental emergency'],
+              tips: [
+                { kicker: 'Prevention', title: 'Why scaling matters', body: 'Bleeding gums, bad breath, visible deposits on the teeth: these are the signs that scaling is needed.' },
+                { kicker: 'Emergencies', title: 'A tooth that hurts: what to do', body: 'Dental pain does not resolve with time. Relieve it, then get seen quickly so the cause can be treated.' },
+                { kicker: 'Hygiene', title: 'The right daily habits', body: 'Brushing morning and night, floss, and a regular check-up: prevention comes down to three habits.' }
+              ],
+              faqs: [
+                { q: 'How do I book an appointment?', a: 'Message us on WhatsApp at 683 125 469. Give your name, the reason and your availability; we will offer you a slot.' },
+                { q: 'Where is the practice?', a: 'In Ndogbong, Douala. The exact address and a landmark are sent to you when your appointment is confirmed.' },
+                { q: 'Do you handle dental emergencies?', a: 'Yes. For acute pain, a broken tooth or an abscess, contact us on WhatsApp and write “urgence”.' },
+                { q: 'What are your prices?', a: 'They depend on the treatment. A quote is given after the examination, before any work begins.' },
+                { q: 'Should I bring an X-ray?', a: 'It is not required. If you have a recent one, bring it along: it saves time.' },
+                { q: 'How often should I come in?', a: 'A check-up every six to twelve months is enough for most patients, more often if you have gum problems.' }
+              ],
+              services: [
+                { t: 'Gum care', d: 'Prevention and management of gingival and periodontal problems.' },
+                { t: 'Cavity treatment', d: 'Treatment of decayed teeth and dental restoration.' },
+                { t: 'Teeth whitening', d: 'Whitening carried out in a professional setting.' },
+                { t: 'Orthodontics', d: 'Correcting the alignment and position of the teeth.' },
+                { t: 'Root canal treatment', d: 'Treatment of infection or inflammation of the dental pulp.' },
+                { t: 'Tooth extraction', d: 'Extraction of teeth where it is indicated.' },
+                { t: 'Dental emergencies', d: 'Care for pain and situations that need a rapid consultation.' },
+                { t: 'Dental prostheses', d: 'Replacing missing teeth with suitable prosthetic solutions.' },
+                { t: 'Scaling', d: 'Removal of tartar, with advice on keeping good oral hygiene.' },
+                { t: 'Dental consultation', d: 'Oral examination, diagnosis and guidance towards the right treatment.' }
+              ],
+              gallery: ['Treatment room', 'Sterilised instruments', 'Dental unit', 'Panoramic X-ray', 'Consultation', 'Children’s care']
+            }
+          };
+        }
+
+        renderVals() {
+          const lang = this.state.lang || this.props.defaultLang || 'fr';
+          const t = this.dict()[lang] || this.dict().fr;
+          const desk = this.state.w >= 900;
+          const ids = ['#top', '#about', '#services', '#gallery', '#pricing', '#reviews', '#tips', '#faq', '#contact'];
+          const icons = ['shield-check', 'circle-dot', 'sparkles', 'grip-horizontal', 'syringe', 'circle-minus', 'alarm-clock', 'layers', 'droplets', 'clipboard-list'];
+          const shots = ['img/salle-bleue.jpg', 'img/instruments-plateau.jpg', 'img/salle-bois.jpg', 'img/radio-panoramique.jpg', 'img/examen-dents.jpg', 'img/enfant-sourire.jpg'];
+          const tipShots = ['img/instruments-unit.jpg', 'img/examen-dents.jpg', 'img/enfant-sourire.jpg'];
+          const on = { background: 'var(--surface-inverse)', color: 'var(--text-invert)' };
+          const off = { background: 'transparent', color: 'var(--text-muted)' };
+          const navAll = t.nav.map((label, i) => ({ label, href: ids[i], n: String(i + 1).padStart(2, '0') }));
+
+          return {
+            t, lang, menu: this.state.menu,
+            practitioner: this.props.practitioner ?? 'Dr. James Leo',
+            showPricing: this.props.showPricing ?? true,
+            showReviews: this.props.showReviews ?? true,
+            deskFlex: desk ? 'flex' : 'none',
+            mobFlex: desk ? 'none' : 'flex',
+            tickerSize: desk ? 54 : 34,
+            tickerItems: t.services.map(s => s.t.toUpperCase()),
+            navAll,
+            navLinks: [navAll[1], navAll[2], navAll[3], navAll[6], navAll[8]],
+            heroMedia: { minHeight: desk ? 420 : 320 },
+            heroThumb: { width: desk ? 156 : 124, flex: '0 0 auto' },
+            flatMedia: { borderRadius: 0 },
+            blockBtn: { width: '100%', justifyContent: 'center' },
+            blockTop: { marginTop: 20 },
+            floatBtn: { boxShadow: 'var(--shadow-float)' },
+            services: t.services.map((s, i) => ({ title: s.t, desc: s.d, icon: icons[i], n: String(i + 1).padStart(2, '0') })),
+            gallery: t.gallery.map((cap, i) => ({ cap, src: shots[i] })),
+            tips: t.tips.map((a, i) => ({ ...a, src: tipShots[i] })),
+            prices: t.prices.map(label => ({ label, value: t.onRequest })),
+            faqs: t.faqs.map((f, i) => ({
+              q: f.q, a: f.a,
+              open: !!this.state.open[i],
+              sign: this.state.open[i] ? '–' : '+',
+              toggle: () => this.setState(s => ({ open: { ...s.open, [i]: !s.open[i] } }))
+            })),
+            setFr: () => this.setState({ lang: 'fr' }),
+            setEn: () => this.setState({ lang: 'en' }),
+            frBg: lang === 'fr' ? on.background : off.background,
+            frFg: lang === 'fr' ? on.color : off.color,
+            enBg: lang === 'en' ? on.background : off.background,
+            enFg: lang === 'en' ? on.color : off.color,
+            openMenu: () => this.setState({ menu: true }),
+            closeMenu: () => this.setState({ menu: false }),
+            openWa: () => window.open('https://wa.me/237683125469', '_blank'),
+            openFb: () => window.open('https://facebook.com/profile.php?id=61594091849398', '_blank'),
+            openMap: () => window.open('https://www.google.com/maps/search/?api=1&query=Ndogbong+Douala+Cameroun', '_blank'),
+            toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' })
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

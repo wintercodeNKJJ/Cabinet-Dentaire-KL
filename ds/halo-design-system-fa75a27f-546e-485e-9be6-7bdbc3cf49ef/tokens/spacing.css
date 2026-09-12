@@ -1,0 +1,22 @@
+:root{
+--space-1:4px; /* @kind spacing */
+--space-2:8px; /* @kind spacing */
+--space-3:12px; /* @kind spacing */
+--space-4:16px; /* @kind spacing */
+--space-5:20px; /* @kind spacing */
+--space-6:24px; /* @kind spacing */
+--space-8:32px; /* @kind spacing */
+--space-10:40px; /* @kind spacing */
+--space-12:48px; /* @kind spacing */
+--space-16:64px; /* @kind spacing */
+--space-20:80px; /* @kind spacing */
+--space-24:96px; /* @kind spacing */
+--space-32:128px; /* @kind spacing */
+--gutter:12px;            /* grid gap between cards — tight, near-touching */
+--page-pad-x:12px;        /* content runs close to the viewport edge */
+--section-gap:96px; /* @kind spacing */
+--card-pad:24px; /* @kind spacing */
+--control-pad-x:16px; /* @kind spacing */
+--control-pad-y:9px; /* @kind spacing */
+--max-measure:46ch; /* @kind spacing */
+}

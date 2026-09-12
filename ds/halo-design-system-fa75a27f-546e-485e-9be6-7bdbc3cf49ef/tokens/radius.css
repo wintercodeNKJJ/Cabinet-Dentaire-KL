@@ -1,0 +1,13 @@
+:root{
+--radius-xs:6px; /* @kind radius */
+--radius-sm:10px; /* @kind radius */
+--radius-md:16px; /* @kind radius */
+--radius-lg:24px; /* @kind radius */
+--radius-xl:32px; /* @kind radius */
+--radius-pill:999px; /* @kind radius */
+--radius-circle:50%; /* @kind radius */
+--radius-card:var(--radius-lg); /* @kind radius */
+--radius-media:var(--radius-lg); /* @kind radius */
+--radius-control:var(--radius-pill);   /* every control is a pill */
+--blob:52% 48% 46% 54%/46% 52% 48% 54%; /* @kind other */
+}

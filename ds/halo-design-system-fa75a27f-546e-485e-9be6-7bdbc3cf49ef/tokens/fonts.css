@@ -1,0 +1,10 @@
+/* Halo webfonts.
+   SUBSTITUTION: no font binaries were supplied with the source screenshots.
+   The reference type is a neutral Helvetica-style grotesk (Helvetica Now Display / Neue Haas class).
+   Closest freely-licensed match: Archivo (grotesk, tight apertures, wide weight range).
+   Mono: JetBrains Mono. Replace the @font-face src values with real binaries when available. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@font-face{font-family:"Halo Display";src:local("Archivo"),url("https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTNDNZ9xdp.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Halo Text";src:local("Archivo"),url("https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTNDNZ9xdp.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Halo Mono";src:local("JetBrains Mono"),url("https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2") format("woff2");font-weight:400 500;font-style:normal;font-display:swap}
